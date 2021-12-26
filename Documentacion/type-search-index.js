@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"LogIn","l":"LogInController"},{"p":"<Unnamed>","l":"MainApp"}];updateSearchResults();
