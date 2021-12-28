@@ -9,6 +9,14 @@ import javafx.stage.Stage;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import User.User;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * @author Manuel Rodriguez, Juan Pablo
@@ -21,7 +29,7 @@ public class MainApp extends Application {
      * @param stage Ventana principal, JavaFX la genera automaticamente.
      */
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws IOException, JSONException {
 
         try{
             Parent root = new FXMLLoader().load(formInputStreamFromURL("src/main/java/LogIn/LogIn.fxml"));
@@ -40,6 +48,19 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
 
+        //TODO: refactor exceptions, clean this code, test in main method
+        String data = new String(Files.readAllBytes(Paths.get("src/main/resources/Users.json")));
+        JSONArray jsonArray = new JSONArray(data);
+
+        for(int i = 0; i < jsonArray.length(); i++){
+            JSONObject ob = jsonArray.getJSONObject(i);
+            new User(ob.getString("name"), ob.getString("username"), ob.getString("password"),
+                    ob.getBoolean("admin"));
+        }
+
+        for(User u: User.getUSERS().values()){
+            System.out.println(u.toString());
+        }
     }
 
     public static void main(String[] args) {
