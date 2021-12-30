@@ -30,14 +30,16 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="85.0" layoutY="130.0" prefHeight="25.0" prefWidth="220.0" promptText="usuario" />
+            <TextField layoutX="85.0" layoutY="130.0" prefHeight="25.0" prefWidth="220.0" promptText="usuario" fx:id="userTF"/>
             <Label layoutX="85.0" layoutY="192.0" text="CONTRASEÑA">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <PasswordField layoutX="85.0" layoutY="215.0" prefHeight="25.0" prefWidth="220.0" promptText="constraseña" />
-            <Button layoutX="127.0" layoutY="285.0" mnemonicParsing="false" style="-fx-background-color: #DF2935; -fx-border-radius: 20;" text="INTRODUCIR" textFill="WHITE">
+            <PasswordField layoutX="85.0" layoutY="215.0" prefHeight="25.0" prefWidth="220.0" promptText="constraseña"
+            fx:id="pswdF"/>
+            <Button layoutX="127.0" layoutY="285.0" mnemonicParsing="false" style="-fx-background-color: #DF2935;
+             -fx-border-radius: 20;" text="INTRODUCIR" textFill="WHITE" onAction="#submitButton">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

@@ -22,6 +22,7 @@ public class User {
         USERS.put(username, this);
     }
 
+
     public String getName() {
         return name;
     }
