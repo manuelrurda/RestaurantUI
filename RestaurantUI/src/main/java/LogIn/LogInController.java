@@ -5,11 +5,18 @@ import Main.Utils;
 import User.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 /**
  * Controlador para la escena de Log-In. Contiene toda la logica para obtener la informacion de los campos de texto
@@ -17,15 +24,15 @@ import javafx.scene.image.Image;
  */
 public class LogInController {
     @FXML
-    ImageView fondaTistaLogo;
+    private ImageView fondaTistaLogo;
     @FXML
-    ImageView lockIcon;
+    private ImageView lockIcon;
     @FXML
-    TextField userTF;
+    private TextField userTextField;
     @FXML
-    PasswordField pswdF;
+    private PasswordField pswdField;
     @FXML
-    Button button;
+    private Label incorrectCreds;
 
     /**
      * Metodo inicial de la escena, configura valores iniciales para los componentes.
@@ -37,14 +44,50 @@ public class LogInController {
         lockIcon.setImage(lockImage);
     }
 
+    /**
+     * Metodo llamado al momento de hacer click en el boton, "Introducir". Obtiene los valores
+     * del nombre de usuario y contraseña. Si las credenciales son correctas, cambia de escena
+     * a la interfaz principal. Ademas, crea un archivo temporal para pasar el objeto de usuario
+     * a la interfaz principal.
+     * @param e Evento, click del boton.
+     */
     public void submitButton(ActionEvent e){
-        String username = userTF.getText();
-        String password = pswdF.getText();
-        System.out.println(authenticate(username, password));
+        String username = userTextField.getText();
+        String password = pswdField.getText();
+        User user = authenticate(username, password);
+        if(user != null){
+            try{
+                //TODO: Utilizar archivos para pasar el objeto user
+
+                // Cambiar de escena a la interfaz principal
+                Parent root = new FXMLLoader().load(Utils.formInputStreamFromURL(
+                        "src/main/java/MainInterface/MainInterface.fxml"));
+                Stage stage = (Stage)((Node) e.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.setHeight(600);
+                stage.setWidth(900);
+
+
+                stage.show();
+            }catch (IOException exception){
+                System.out.println("Error loading FXML file.");
+                exception.printStackTrace();
+            }
+        }else{
+            incorrectCreds.setText("Credenciales incorrectas, intentelo de nuevo.");
+        }
     }
 
+    /**
+     * Metodo para autentificar las credenciales introducidas en la interfaz de Log-in.
+     * @param username Nombre se usuario introducido en el campo "Usuario".
+     * @param password Constrasena introducida en el campo "Constrasena".
+     * @return Devuelve el usuario si las credenciales son correctas, si alguna es incorrecta,
+     * devuelve null.
+     */
     public static User authenticate(String username, String password){
-        User user = User.getUSERS().get(username);
+        User user = User.USERS.get(username);
         return (user != null && user.getPassword().equals(password)) ? user : null;
     }
 

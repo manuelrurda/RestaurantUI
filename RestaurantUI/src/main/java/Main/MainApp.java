@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import User.User;
+import User.*;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,12 +52,20 @@ public class MainApp extends Application {
 
         for(int i = 0; i < jsonArray.length(); i++){
             JSONObject ob = jsonArray.getJSONObject(i);
-            new User(ob.getString("name"), ob.getString("username"), ob.getString("password"),
-                    ob.getBoolean("admin"));
+
+            // Tal vez haya una mejor manera de hacer esto
+            if(ob.getString("type").equals("Admin")){
+                new Admin(ob.getString("firstName"), ob.getString("lastName"), ob.getString("username"),
+                        ob.getString("password"));
+            }else{
+                new Waiter(ob.getString("firstName"), ob.getString("lastName"), ob.getString("username"),
+                        ob.getString("password"));
+            }
         }
 
-        for(User u: User.getUSERS().values()){
+        for(User u: User.USERS.values()){
             System.out.println(u.toString());
+            System.out.println(u instanceof Waiter);
         }
     }
 

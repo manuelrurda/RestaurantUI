@@ -5,26 +5,26 @@ import java.util.HashMap;
 /**
  *
  */
-public class User {
+public abstract class User {
 
-    private String name;
+    private String firstName;
+    private String lastName;
     private String username;
     private String password;
-    private Boolean admin;
 
-    static HashMap<String, User> USERS = new HashMap<String, User>();
+    static public HashMap<String, User> USERS = new HashMap<String, User>();
 
-    public User(String name, String username, String password, Boolean admin) {
-        this.name = name;
+     User(String firstName, String lastName, String username, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.username = username;
         this.password = password;
-        this.admin = admin;
         USERS.put(username, this);
     }
 
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
     public String getUsername() {
@@ -35,18 +35,6 @@ public class User {
         return password;
     }
 
-    public Boolean getAdmin() {
-        return admin;
-    }
-
-    public static HashMap<String, User> getUSERS() {
-        return USERS;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void setUsername(String username) {
         this.username = username;
     }
@@ -55,17 +43,12 @@ public class User {
         this.password = password;
     }
 
-    public void setAdmin(Boolean admin) {
-        this.admin = admin;
-    }
-
     @Override
     public String toString() {
         return "User{" +
-                "name='" + name + '\'' +
+                "name='" + firstName + ' ' + lastName + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", admin=" + admin +
                 '}';
     }
 }

@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Clase con metodos de utilidad para trabajar con JavaFX y JSON
+ * Clase con metodos de utilidad para trabajar con JavaFX
  */
 public class Utils {
     /**
@@ -19,7 +19,7 @@ public class Utils {
         try{
             is = new FileInputStream(url);
         }catch(IOException e){
-            System.out.println("File Not Found");
+            System.out.println("Error generating Input Stream");
             e.printStackTrace();
         }
         return is;

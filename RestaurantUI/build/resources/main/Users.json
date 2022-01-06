@@ -1,15 +1,17 @@
 [
   {
-    "name": "Manuel Rodriguez",
-    "username": "manuelrurda",
-    "password": "1234qwer",
-    "admin": true
+    "type": "Admin",
+    "firstName": "Manuel",
+    "lastName": "Rodriguez",
+    "username": "m",
+    "password": "1"
   },
   {
-    "name": "Edgar Tista",
+    "type": "Waiter",
+    "firstName": "Edgar",
+    "lastName": "Tista",
     "username": "edtista",
-    "password": "9909",
-    "admin": false
+    "password": "9909"
   }
 ]
 
