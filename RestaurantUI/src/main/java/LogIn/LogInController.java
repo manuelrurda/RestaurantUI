@@ -46,16 +46,18 @@ public class LogInController {
 
     /**
      * Metodo llamado al momento de hacer click en el boton, "Introducir". Obtiene los valores
-     * del nombre de usuario y contraseña. Si las credenciales son correctas, cambia de escena
-     * a la interfaz principal. Ademas, crea un archivo temporal para pasar el objeto de usuario
-     * a la interfaz principal.
+     * del nombre de usuario y contraseña. Si las credenciales son correctas, cambia de escena a la interfaz principal.
+     * Ademas, crea un archivo temporal para pasar el objeto de usuario a la interfaz principal.
      * @param e Evento, click del boton.
      */
     public void submitButton(ActionEvent e){
         String username = userTextField.getText();
         String password = pswdField.getText();
+        // Se usa polimorfismo, se guarda un Admin o un Waiter en un User
         User user = authenticate(username, password);
         if(user != null){
+            //Crear archivo temporal de usuario
+            Utils.sendObject(user, "currentUser");
             try{
                 //TODO: Utilizar archivos para pasar el objeto user
 
@@ -67,7 +69,6 @@ public class LogInController {
                 stage.setScene(scene);
                 stage.setHeight(600);
                 stage.setWidth(900);
-
 
                 stage.show();
             }catch (IOException exception){

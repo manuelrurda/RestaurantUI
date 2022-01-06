@@ -1,11 +1,12 @@
 package User;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
  *
  */
-public abstract class User {
+public abstract class User implements Serializable {
 
     private String firstName;
     private String lastName;
