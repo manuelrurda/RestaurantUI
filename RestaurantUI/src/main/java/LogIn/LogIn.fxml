@@ -8,51 +8,52 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LogIn.LogInController">
-   <left>
-      <Pane prefHeight="400.0" prefWidth="283.0" style="-fx-background-color: DF2935#DF2935;" BorderPane.alignment="CENTER">
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <children>
-            <ImageView fx:id="fondaTistaLogo" fitHeight="258.0" fitWidth="258.0" layoutX="13.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
-            </ImageView>
-         </children>
-      </Pane>
-   </left>
-   <center>
-      <Pane prefHeight="400.0" prefWidth="367.0" style="-fx-background-color: #F0F0F0;" BorderPane.alignment="CENTER">
+
+<Pane prefHeight="400.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LogIn.LogInController">
+   <children>
+      <Pane layoutX="283.0" prefHeight="400.0" prefWidth="371.0" style="-fx-background-color: #F0F0F0;">
          <children>
             <Label layoutX="85.0" layoutY="106.0" text="USUARIO">
                <font>
-                  <Font size="15.0" />
+                  <Font name="Arial" size="15.0" />
                </font>
             </Label>
             <TextField fx:id="userTextField" layoutX="85.0" layoutY="130.0" prefHeight="35.0" prefWidth="220.0" promptText="usuario" />
             <Label layoutX="85.0" layoutY="192.0" text="CONTRASEÑA">
                <font>
-                  <Font size="15.0" />
+                  <Font name="Arial" size="15.0" />
                </font>
             </Label>
             <PasswordField fx:id="pswdField" layoutX="85.0" layoutY="215.0" prefHeight="35.0" prefWidth="220.0" promptText="constraseña" />
             <Button layoutX="127.0" layoutY="285.0" mnemonicParsing="false" onAction="#submitButton" style="-fx-background-color: #DF2935;              -fx-border-radius: 20;" text="INTRODUCIR" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="Arial" size="18.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
                <effect>
-                  <DropShadow height="5.0" offsetY="1.0" radius="1.5775000000000001" width="3.31" />
+                  <DropShadow height="9.66" offsetY="1.0" radius="2.7425" width="3.31" />
                </effect>
             </Button>
-            <ImageView fx:id="lockIcon" fitHeight="60.0" fitWidth="60.0" layoutX="161.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="lockIcon" fitHeight="52.0" fitWidth="52.0" layoutX="169.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="incorrectCreds" layoutX="62.0" layoutY="255.0" textFill="RED" />
          </children>
       </Pane>
-   </center>
-</BorderPane>
+      <Pane prefHeight="400.0" prefWidth="283.0" style="-fx-background-color: DF2935#DF2935;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <children>
+            <ImageView fx:id="fondaTistaLogo" fitHeight="239.0" fitWidth="234.0" layoutX="25.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+            </ImageView>
+         </children>
+         <effect>
+            <DropShadow height="3.5" radius="2.125" width="7.0" />
+         </effect>
+      </Pane>
+   </children>
+</Pane>
