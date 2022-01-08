@@ -1,6 +1,8 @@
 package Main;
 
 import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * Clase con metodos de utilidad para trabajar con JavaFX
@@ -8,7 +10,8 @@ import java.io.*;
 public abstract class Utils {
     /**
      * Metodo para generar un InputStream a partir de un directorio, es necesario para cargar archivos FXML, imagenes,
-     * stylesheets, etc.
+     * stylesheets, etc. Ya existe un metodo que hace esto en Javafx, sin embargo se generaban muchos errores al cargar
+     * archivos.
      * @param url Direccion del arhivo desde raiz del proyecto - RestaurantUI/
      * @return Devuelve un objeto InputStream a partir del url.
      */
@@ -21,6 +24,23 @@ public abstract class Utils {
             e.printStackTrace();
         }
         return is;
+    }
+
+    /**
+     * Metodo para generar un objeto URL a partir de un directorio. Ya existe un metodo que hace esto en Javafx,
+     * sin embargo se generaban muchos errores al cargar archivos.
+     * @param path Direccion del archivo desde raiz del proyecto - RestaurantUI/
+     * @return Devuelve un Objeto URL a partir de la direccion.
+     */
+    public static URL formURLFromPath(String path){
+        URL url = null;
+        try{
+            url = new File(path).toURI().toURL();
+        }catch (MalformedURLException e){
+            System.out.println("Error generating URL.");
+            e.printStackTrace();
+        }
+        return url;
     }
 
     /**

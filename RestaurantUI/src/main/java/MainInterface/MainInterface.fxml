@@ -15,6 +15,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
+<?import CustomControls.tableButton.TableButtonControl?>
 
 <?import java.util.ArrayList?>
 <AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainInterface.MainInterfaceController">
@@ -90,6 +91,22 @@
       </Pane>
       <Pane layoutY="90.0" prefHeight="510.0" prefWidth="481.0">
          <children>
+            <TableButtonControl layoutX="132.0" layoutY="44.0" fx:id="table1btn"></TableButtonControl>
+            <TableButtonControl layoutX="262.0" layoutY="124.0" fx:id="table2btn"></TableButtonControl>
+            <TableButtonControl layoutX="132.0" layoutY="204.0" fx:id="table3btn"></TableButtonControl>
+            <TableButtonControl layoutX="262.0" layoutY="284.0" fx:id="table4btn"></TableButtonControl>
+            <TableButtonControl layoutX="132.0" layoutY="364.0" fx:id="table5btn"></TableButtonControl>
+
+            <fx:define>
+
+               <ArrayList fx:id="tableButtons">
+                  <fx:reference source="table1btn" />
+                  <fx:reference source="table2btn" />
+                  <fx:reference source="table3btn" />
+                  <fx:reference source="table4btn" />
+                  <fx:reference source="table5btn" />
+               </ArrayList>
+            </fx:define>
             <!--<Button fx:id="table1btn" layoutX="132.0" layoutY="44.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="1">
                <effect>
                   <Lighting diffuseConstant="1.16" specularExponent="3.26" surfaceScale="0.81">

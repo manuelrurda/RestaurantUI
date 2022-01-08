@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import CustomControls.tableButton.*;
 import jdk.jshell.execution.Util;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class MainInterfaceController {
     @FXML
     private Button adminMenuButton;
     @FXML
-    private List<Button> tableButtons;
+    private List<TableButtonControl> tableButtons;
 
     private User user;
 
@@ -42,14 +43,17 @@ public class MainInterfaceController {
         lgiIV.setFitHeight(30);
         logOutButton.setGraphic(lgiIV);
 
-        // Iconos de las mesas
-        /*for(Button b : tableButtons){
+        // Iconos y numeros de las mesas
+        int tableNum = 1;
+        for(TableButtonControl b : tableButtons){
             Image tableIcon = new Image(Utils.formInputStreamFromURL("src/main/resources/Images/TableIcon.png"));
             ImageView tiIV = new ImageView(tableIcon);
             tiIV.setFitWidth(80);
             tiIV.setFitHeight(80);
-            b.setGraphic(tiIV);
-        }*/
+            b.getMenuButton().setText(String.valueOf(tableNum));
+            b.getMenuButton().setGraphic(tiIV);
+            tableNum++;
+        }
 
         // Recibir usuario de escena de login.
         user = (User) Utils.receiveObject("currentUser");

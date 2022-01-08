@@ -1,0 +1,17 @@
+[
+  {
+    "type": "Admin",
+    "firstName": "Manuel",
+    "lastName": "Rodriguez",
+    "username": "m",
+    "password": "1"
+  },
+  {
+    "type": "Waiter",
+    "firstName": "Edgar",
+    "lastName": "Tista",
+    "username": "edtista",
+    "password": "9909"
+  }
+]
+
