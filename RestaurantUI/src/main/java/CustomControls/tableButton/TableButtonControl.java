@@ -43,14 +43,12 @@ public class TableButtonControl extends AnchorPane {
         return controller.getInnerShadow();
     }
 
-    public static void tableButtonClick(TableButtonController controller){
-        if(!controller.getTable().getOccupied()){
-            controller.getTable().changeOccupiedStatus();
-            controller.getInnerShadow().setColor(Color.web("#ff0009"));
-        }else{
-            controller.getTable().changeOccupiedStatus();
-            controller.getInnerShadow().setColor(Color.color(0.09247, 0.86842, 0.11833));
-        }
+    public void setTableOccupiedStatus(boolean b){
+        controller.setTableOccupiedStatus(b);
+    }
+
+    public boolean getTableStatus(){
+        return controller.getTable().getOccupied();
     }
 
 }

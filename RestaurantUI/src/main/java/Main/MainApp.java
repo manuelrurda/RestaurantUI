@@ -27,7 +27,7 @@ public class MainApp extends Application {
      * @param stage Ventana principal, JavaFX la genera automaticamente.
      */
     @Override
-    public void start(Stage stage) throws IOException, JSONException {
+    public void start(Stage stage) {
         try{
             Parent root = new FXMLLoader().load(Utils.formInputStreamFromURL("src/main/java/LogIn/LogIn.fxml"));
             Scene scene = new Scene(root);
@@ -45,27 +45,33 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
 
-        //TODO: refactor exceptions, clean this code, test in main method
-        String data = new String(Files.readAllBytes(Paths.get("src/main/resources/Users.json")));
-        JSONArray jsonArray = new JSONArray(data);
+        // Cargar informacion de los usuarios al iniciar
+        try{
+            String data = new String(Files.readAllBytes(Paths.get("src/main/resources/Users.json")));
+            JSONArray jsonArray = new JSONArray(data);
 
-        for(int i = 0; i < jsonArray.length(); i++){
-            JSONObject ob = jsonArray.getJSONObject(i);
+            for(int i = 0; i < jsonArray.length(); i++){
+                JSONObject ob = jsonArray.getJSONObject(i);
 
-            // Tal vez haya una mejor manera de hacer esto
-            if(ob.getString("type").equals("Admin")){
-                new Admin(ob.getString("firstName"), ob.getString("lastName"), ob.getString("username"),
-                        ob.getString("password"));
-            }else{
-                new Waiter(ob.getString("firstName"), ob.getString("lastName"), ob.getString("username"),
-                        ob.getString("password"));
+                // Tal vez haya una mejor manera de hacer esto
+                if(ob.getString("type").equals("Admin")){
+                    new Admin(ob.getString("firstName"), ob.getString("lastName"), ob.getString("username"),
+                            ob.getString("password"));
+                }else{
+                    new Waiter(ob.getString("firstName"), ob.getString("lastName"), ob.getString("username"),
+                            ob.getString("password"));
+                }
             }
+
+            for(User u: User.USERS.values()){
+                System.out.println(u.toString());
+                System.out.println(u instanceof Waiter);
+            }
+        }catch (IOException | JSONException e){
+            System.out.println("Error reading Users data.");
+            e.printStackTrace();
         }
 
-        for(User u: User.USERS.values()){
-            System.out.println(u.toString());
-            System.out.println(u instanceof Waiter);
-        }
     }
 
     public static void main(String[] args) {

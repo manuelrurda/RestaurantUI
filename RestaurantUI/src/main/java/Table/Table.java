@@ -16,7 +16,7 @@ public class Table {
         return occupied;
     }
 
-    public void changeOccupiedStatus() {
-        this.occupied = !occupied;
+    public void setOccupied(boolean b) {
+        this.occupied = b;
     }
 }

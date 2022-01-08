@@ -91,11 +91,11 @@
       </Pane>
       <Pane layoutY="90.0" prefHeight="510.0" prefWidth="481.0">
          <children>
-            <TableButtonControl layoutX="132.0" layoutY="44.0" fx:id="table1btn"></TableButtonControl>
-            <TableButtonControl layoutX="262.0" layoutY="124.0" fx:id="table2btn"></TableButtonControl>
-            <TableButtonControl layoutX="132.0" layoutY="204.0" fx:id="table3btn"></TableButtonControl>
-            <TableButtonControl layoutX="262.0" layoutY="284.0" fx:id="table4btn"></TableButtonControl>
-            <TableButtonControl layoutX="132.0" layoutY="364.0" fx:id="table5btn"></TableButtonControl>
+            <TableButtonControl layoutX="132.0" layoutY="24.0" fx:id="table1btn"></TableButtonControl>
+            <TableButtonControl layoutX="262.0" layoutY="104.0" fx:id="table2btn"></TableButtonControl>
+            <TableButtonControl layoutX="132.0" layoutY="184.0" fx:id="table3btn"></TableButtonControl>
+            <TableButtonControl layoutX="262.0" layoutY="264.0" fx:id="table4btn"></TableButtonControl>
+            <TableButtonControl layoutX="132.0" layoutY="344.0" fx:id="table5btn"></TableButtonControl>
 
             <fx:define>
 
