@@ -9,7 +9,6 @@ public class Table {
     private boolean occupied;
 
     public Table() {
-        this.occupied = false;
     }
 
     public boolean getOccupied(){

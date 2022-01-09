@@ -2,13 +2,19 @@ package MainInterface;
 
 import Main.Utils;
 import User.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import CustomControls.tableButton.*;
-import jdk.jshell.execution.Util;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,6 +36,10 @@ public class MainInterfaceController {
     private Button adminMenuButton;
     @FXML
     private List<TableButtonControl> tableButtons;
+    @FXML
+    private Pane tablesPane;
+    @FXML
+    private Pane orderPane;
 
     private User user;
 
@@ -54,7 +64,6 @@ public class MainInterfaceController {
             String data = new String(Files.readAllBytes(Paths.get("src/main/resources/Tables.json")));
             JSONArray jsonArray = new JSONArray(data);
 
-            // Iconos y numeros de las mesas
             int i = 0;
             for(TableButtonControl b : tableButtons){
                 // Imagen, tamano y numero de mesa
@@ -64,7 +73,6 @@ public class MainInterfaceController {
                 tiIV.setFitHeight(80);
                 b.getMenuButton().setText(String.valueOf(i+1));
                 b.getMenuButton().setGraphic(tiIV);
-                System.out.println(jsonArray.length());
 
                 // Cargar estado de mesa segun archivo
                 JSONObject ob = jsonArray.getJSONObject(i);
@@ -85,6 +93,33 @@ public class MainInterfaceController {
 
         // Habilitar menu admin
         adminMenuButton.setVisible(user instanceof Admin);
+    }
+
+    /**
+     * Metodo llamado al hacer click en el boton de Log-Out, para regresar a la interfaz de Log-In.
+     * @param e
+     */
+    public void logOut(ActionEvent e){
+        try{
+            // Cambiar de escena a interfaz login
+            Parent root = new FXMLLoader().load(Utils.formInputStreamFromURL(
+                    "src/main/java/LogIn/LogIn.fxml"));
+            Stage stage = (Stage)((Node) e.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setHeight(400);
+            stage.setWidth(650);
+
+            stage.show();
+        }catch (IOException exception){
+            System.out.println("Error loading FXML file.");
+            exception.printStackTrace();
+        }
+    }
+
+    public  void closeOrderPane(ActionEvent e){
+        orderPane.setVisible(false);
+        tablesPane.setVisible(true);
     }
 
 }

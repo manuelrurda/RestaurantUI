@@ -59,8 +59,6 @@ public class LogInController {
             //Crear archivo temporal de usuario
             Utils.sendObject(user, "currentUser");
             try{
-                //TODO: Utilizar archivos para pasar el objeto user
-
                 // Cambiar de escena a la interfaz principal
                 Parent root = new FXMLLoader().load(Utils.formInputStreamFromURL(
                         "src/main/java/MainInterface/MainInterface.fxml"));

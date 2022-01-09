@@ -16,6 +16,10 @@ import java.io.IOException;
 public class TableButtonControl extends AnchorPane {
 
     TableButtonController controller;
+
+    /**
+     * Constructor estandar para componentes personalizados en javaFX.
+     */
     public TableButtonControl(){
         super();
 

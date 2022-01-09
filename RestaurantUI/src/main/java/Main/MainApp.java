@@ -28,6 +28,7 @@ public class MainApp extends Application {
      */
     @Override
     public void start(Stage stage) {
+        System.out.println(System.getProperty("user.dir"));
         try{
             Parent root = new FXMLLoader().load(Utils.formInputStreamFromURL("src/main/java/LogIn/LogIn.fxml"));
             Scene scene = new Scene(root);
