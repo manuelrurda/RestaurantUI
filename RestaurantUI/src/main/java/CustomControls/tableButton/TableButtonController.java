@@ -1,5 +1,6 @@
 package CustomControls.tableButton;
 
+import Main.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,12 +11,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import Table.Table;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
-/**
- * Esta clase es el Adapter entre la clase del componente, incluyendo el archivo FXML y el resto del programa.
- * Tiene toda la logica y comportamiento del componente.
- */
 public class TableButtonController implements Initializable {
 
     @FXML
@@ -26,13 +25,17 @@ public class TableButtonController implements Initializable {
     private final Table table = new Table();
 
     /**
-     * Metodo necesario para Trabajar con componentes perzonalizados en javaFX.
+     * Metodo que se llama al cargar el archivo FXML para configurar valores iniciales del componente.
      * @param location
      * @param resources
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        Image tableIcon = new Image(Utils.formInputStreamFromURL("src/main/resources/Images/TableIcon.png"));
+        ImageView tiIV = new ImageView(tableIcon);
+        tiIV.setFitWidth(80);
+        tiIV.setFitHeight(80);
+        menuButton.setGraphic(tiIV);
     }
 
     public MenuButton getMenuButton() {
@@ -72,5 +75,10 @@ public class TableButtonController implements Initializable {
             getMenuButton().getItems().get(0).setText("Ocupar");
             getMenuButton().getItems().get(1).setVisible(false);
         }
+    }
+
+    public void openOrder(ActionEvent e){
+
+        Utils.changeScene("src/main/java/Menus/OrderMenu/OrderMenu.fxml", e);
     }
 }

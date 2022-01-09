@@ -1,5 +1,12 @@
 package Main;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -86,5 +93,21 @@ public abstract class Utils {
             e.printStackTrace();
         }
         return obj;
+    }
+
+    public static void changeScene(String path, ActionEvent e){
+        try{
+            // Cambiar de escena a la interfaz principal
+            Parent root = new FXMLLoader().load(Utils.formInputStreamFromURL(
+                    path));
+            Stage stage = (Stage)((Node) e.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+
+            stage.show();
+        }catch (IOException exception){
+            System.out.println("Error loading Scene FXML file.");
+            exception.printStackTrace();
+        }
     }
 }

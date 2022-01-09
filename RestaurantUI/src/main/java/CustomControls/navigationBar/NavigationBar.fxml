@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!-- Nav Bar -->
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+<Pane xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml" prefHeight="90.0" prefWidth="900.0" style="-fx-background-color: #DF2935;">
+<children>
+    <ImageView fx:id="fondaTistaLogo" fitHeight="89.0" fitWidth="89.0" layoutX="25.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+    </ImageView>
+    <HBox alignment="CENTER" layoutX="329.0" layoutY="9.0" prefHeight="73.0" prefWidth="571.0">
+        <children>
+            <Button fx:id="adminMenuButton" maxWidth="90.0" minWidth="90.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="90.0" style="-fx-background-color: #DF2935;" text="Admin" textFill="WHITE">
+                <font>
+                    <Font name="Arial" size="20.0" />
+                </font>
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+                <HBox.margin>
+                    <Insets left="5.0" right="5.0" />
+                </HBox.margin>
+            </Button>
+            <Button minWidth="90.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="90.0" style="-fx-background-color: #DF2935;" text="Mesas" textFill="WHITE">
+                <font>
+                    <Font name="Arial" size="20.0" />
+                </font>
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+                <HBox.margin>
+                    <Insets left="5.0" right="5.0" />
+                </HBox.margin>
+            </Button>
+            <Button maxWidth="150.0" minWidth="150.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="150.0" style="-fx-background-color: #DF2935;" text="Estadísticas" textFill="WHITE">
+                <font>
+                    <Font name="Arial" size="20.0" />
+                </font>
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+                <HBox.margin>
+                    <Insets left="5.0" right="5.0" />
+                </HBox.margin>
+            </Button>
+            <Separator orientation="VERTICAL" prefHeight="66.0" prefWidth="41.0" />
+            <Label fx:id="nameLabel" alignment="CENTER_RIGHT" maxWidth="120.0" minWidth="50.0" prefHeight="37.0" textAlignment="RIGHT" textFill="WHITE" HBox.hgrow="NEVER">
+                <font>
+                    <Font name="Arial Bold" size="20.0" />
+                </font>
+            </Label>
+            <Button fx:id="logOutButton" contentDisplay="CENTER" graphicTextGap="0.0" maxHeight="50.0" maxWidth="50.0"
+                    mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #DF2935;"
+                    >
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+                <HBox.margin>
+                    <Insets left="10.0" />
+                </HBox.margin>
+            </Button>
+        </children>
+    </HBox>
+</children>
+</Pane>

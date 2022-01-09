@@ -1,5 +1,6 @@
 package CustomControls.tableButton;
 
+import javafx.beans.NamedArg;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.MenuButton;
@@ -7,20 +8,17 @@ import javafx.scene.effect.InnerShadow;
 import javafx.scene.layout.AnchorPane;
 
 import Main.Utils;
-import javafx.scene.paint.Color;
-
 import java.io.IOException;
-
-// TODO: usar archivos para leer mesas ocupadas y desocupadas despues de salir de la aplicacion
 
 public class TableButtonControl extends AnchorPane {
 
     TableButtonController controller;
 
     /**
-     * Constructor estandar para componentes personalizados en javaFX.
+     * Constructor llamado al momento de inicializar el componente padre.
+     * @param tableNumber parametro pasado en archivo FXML. Texto del boton, se utiliza para darle el numero de mesa.
      */
-    public TableButtonControl(){
+    public TableButtonControl(@NamedArg("tableNumber") String tableNumber){
         super();
 
         try {
@@ -31,6 +29,8 @@ public class TableButtonControl extends AnchorPane {
             Node n = loader.load();
 
             this.getChildren().add(n);
+
+            controller.getMenuButton().setText(tableNumber);
 
 
         }catch (IOException e){

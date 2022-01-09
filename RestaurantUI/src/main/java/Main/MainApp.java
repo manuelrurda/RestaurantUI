@@ -1,5 +1,7 @@
 package Main;
 
+
+//TODO: refactorizar table buton para inicializar la foto desde el controller del componente y no el menu. con @NamedArg pasar usuario entre escenas de manera mas eficiente
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

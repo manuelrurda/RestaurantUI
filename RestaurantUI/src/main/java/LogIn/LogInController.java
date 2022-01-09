@@ -2,7 +2,7 @@ package LogIn;
 
 import Main.Utils;
 
-import User.User;
+import User.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,15 +53,20 @@ public class LogInController {
     public void submitButton(ActionEvent e){
         String username = userTextField.getText();
         String password = pswdField.getText();
+
         // Se usa polimorfismo, se guarda un Admin o un Waiter en un User
         User user = authenticate(username, password);
         if(user != null){
-            //Crear archivo temporal de usuario
-            Utils.sendObject(user, "currentUser");
+
+            // Establecer usuario identificado en clase Singleton
+            CurrentUser currentUser = CurrentUser.getInstance();
+            currentUser.setCurrentUser(user);
+
+            // Como cambia de tamano la ventana, aqui no se utiliza Utils.changeScene()
             try{
                 // Cambiar de escena a la interfaz principal
                 Parent root = new FXMLLoader().load(Utils.formInputStreamFromURL(
-                        "src/main/java/MainInterface/MainInterface.fxml"));
+                        "src/main/java/Menus/TablesMenu/TablesMenu.fxml"));
                 Stage stage = (Stage)((Node) e.getSource()).getScene().getWindow();
                 Scene scene = new Scene(root);
                 stage.setScene(scene);

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import CustomControls.tableButton.TableButtonControl?>
+<?import CustomControls.navigationBar.NavigationBar?>
+
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.effect.DropShadow?>
+
+<Pane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F0F0F0;" fx:controller="Menus.TablesMenu.TablesMenuController"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <!-- Nav Bar -->
+    <NavigationBar></NavigationBar>
+
+    <!-- Right Empty Pane -->
+    <Pane layoutX="481.0" layoutY="90.0" prefHeight="510.0" prefWidth="419.0" style="-fx-background-color: #FFFFFF;">
+        <children>
+            <Label layoutX="28.0" layoutY="22.0" text="Seleccione una mesa...">
+                <font>
+                    <Font name="Arial" size="16.0" />
+                </font>
+            </Label>
+        </children>
+        <effect>
+            <DropShadow blurType="GAUSSIAN" height="0.0" radius="4.5" width="20.0" />
+        </effect>
+    </Pane>
+
+    <!-- Table Buttons Pane -->
+    <Pane layoutY="90.0" prefHeight="510.0" prefWidth="481.0">
+        <children>
+            <TableButtonControl layoutX="132.0" layoutY="24.0" fx:id="table1btn" tableNumber="1"></TableButtonControl>
+            <TableButtonControl layoutX="262.0" layoutY="104.0" fx:id="table2btn" tableNumber="2"></TableButtonControl>
+            <TableButtonControl layoutX="132.0" layoutY="184.0" fx:id="table3btn" tableNumber="3"></TableButtonControl>
+            <TableButtonControl layoutX="262.0" layoutY="264.0" fx:id="table4btn" tableNumber="4"></TableButtonControl>
+            <TableButtonControl layoutX="132.0" layoutY="344.0" fx:id="table5btn" tableNumber="5"></TableButtonControl>
+
+            <fx:define>
+
+                <ArrayList fx:id="tableButtons">
+                    <fx:reference source="table1btn" />
+                    <fx:reference source="table2btn" />
+                    <fx:reference source="table3btn" />
+                    <fx:reference source="table4btn" />
+                    <fx:reference source="table5btn" />
+                </ArrayList>
+            </fx:define>
+        </children>
+    </Pane>
+</Pane>

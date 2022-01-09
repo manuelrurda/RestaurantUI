@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.effect.DropShadow?>
+
+<Pane prefHeight="510.0" prefWidth="481.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:id="pane">
+<children>
+    <Label text="Mesa " layoutX="20" layoutY="20">
+        <font>
+            <Font name="Arial Bold" size="25.0"  />
+        </font>
+    </Label>
+    <!-- Scroll Pane adds scrollbar if content floods-->
+    <ScrollPane layoutX="20" layoutY="60" prefHeight="300.0" prefWidth="435.0">
+        <content>
+            <TableView>
+                <columns>
+                    <TableColumn text="Alimento" prefWidth="230"></TableColumn>
+                    <TableColumn text="Cantidad" prefWidth="80"></TableColumn>
+                    <TableColumn text="Precio" prefWidth="100"></TableColumn>
+                </columns>
+            </TableView>
+        </content>
+    </ScrollPane>
+
+    <!--Total amount label-->
+    <Label text="TOTAL: $0.0" layoutY="400" layoutX="20" prefWidth="435"
+           textAlignment="RIGHT" alignment="CENTER_RIGHT">
+        <font>
+            <Font name="Arial Bold" size="20.0"  />
+        </font>
+    </Label>
+
+    <!--Pay Button-->
+    <Button text="Pagar" prefWidth="100" prefHeight="20" layoutX="40" layoutY="435"
+            style="-fx-background-color: #fcdb03; -fx-background-radius: 10;" fx:id="payButton">
+        <font>
+            <Font name="Arial Bold" size="17.0" />
+        </font>
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor>
+        <effect>
+            <DropShadow height="9.66" offsetY="1.0" radius="2.7425" width="3.31" />
+        </effect>
+    </Button>
+
+    <!--Return Button-->
+    <Button text="Regresar" prefWidth="100" prefHeight="20" layoutX="160" layoutY="435"
+            style="-fx-background-color: #DF2935; -fx-background-radius: 10;" textFill="white"
+            fx:id="returnButton" onAction="#closePane">
+        <font>
+            <Font name="Arial Bold" size="17.0" />
+        </font>
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor>
+        <effect>
+            <DropShadow height="9.66" offsetY="1.0" radius="2.7425" width="3.31" />
+        </effect>
+    </Button>
+
+</children>
+</Pane>
