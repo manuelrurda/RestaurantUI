@@ -47,7 +47,6 @@ public class LogInController {
     /**
      * Metodo llamado al momento de hacer click en el boton, "Introducir". Obtiene los valores
      * del nombre de usuario y contraseña. Si las credenciales son correctas, cambia de escena a la interfaz principal.
-     * Ademas, crea un archivo temporal para pasar el objeto de usuario a la interfaz principal.
      * @param e Evento, click del boton.
      */
     public void submitButton(ActionEvent e){
@@ -62,22 +61,14 @@ public class LogInController {
             CurrentUser currentUser = CurrentUser.getInstance();
             currentUser.setCurrentUser(user);
 
-            // Como cambia de tamano la ventana, aqui no se utiliza Utils.changeScene()
-            try{
-                // Cambiar de escena a la interfaz principal
-                Parent root = new FXMLLoader().load(Utils.formInputStreamFromURL(
-                        "src/main/java/Menus/TablesMenu/TablesMenu.fxml"));
-                Stage stage = (Stage)((Node) e.getSource()).getScene().getWindow();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.setHeight(600);
-                stage.setWidth(900);
+            // Obtener ventana actual
+            Stage stage = (Stage)((Node) e.getSource()).getScene().getWindow();
+            // Tamano de la nueva ventana
+            stage.setHeight(600);
+            stage.setWidth(900);
+            // Cambiar de escena a la interfaz principal
+            Utils.changeScene("src/main/java/Menus/TablesMenu/TablesMenu.fxml", stage);
 
-                stage.show();
-            }catch (IOException exception){
-                System.out.println("Error loading FXML file.");
-                exception.printStackTrace();
-            }
         }else{
             incorrectCreds.setText("Credenciales incorrectas, intentelo de nuevo.");
         }

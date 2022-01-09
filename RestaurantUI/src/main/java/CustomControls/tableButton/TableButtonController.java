@@ -4,7 +4,10 @@ import Main.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.effect.InnerShadow;
 
 import java.net.URL;
@@ -13,10 +16,14 @@ import java.util.ResourceBundle;
 import Table.Table;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 public class TableButtonController implements Initializable {
 
+    @FXML
+    private Pane mainPane;
     @FXML
     private MenuButton menuButton;
     @FXML
@@ -78,7 +85,7 @@ public class TableButtonController implements Initializable {
     }
 
     public void openOrder(ActionEvent e){
-
-        Utils.changeScene("src/main/java/Menus/OrderMenu/OrderMenu.fxml", e);
+        Stage stage = (Stage) mainPane.getScene().getWindow();
+        Utils.changeScene("src/main/java/Menus/OrderMenu/OrderMenu.fxml", stage);
     }
 }

@@ -95,16 +95,15 @@ public abstract class Utils {
         return obj;
     }
 
-    public static void changeScene(String path, ActionEvent e){
+    public static void changeScene(String path, Stage stage){
         try{
-            // Cambiar de escena a la interfaz principal
+
             Parent root = new FXMLLoader().load(Utils.formInputStreamFromURL(
                     path));
-            Stage stage = (Stage)((Node) e.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
-
             stage.show();
+
         }catch (IOException exception){
             System.out.println("Error loading Scene FXML file.");
             exception.printStackTrace();
