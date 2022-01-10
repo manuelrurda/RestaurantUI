@@ -29,9 +29,6 @@ public class FoodMenuItem extends AnchorPane {
 
             this.getChildren().add(n);
 
-
-
-
         }catch (IOException e){
             System.out.println("Error generating custom component");
             e.printStackTrace();

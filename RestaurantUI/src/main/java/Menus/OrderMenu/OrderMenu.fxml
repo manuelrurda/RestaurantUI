@@ -12,13 +12,15 @@
 <?import CustomControls.navigationBar.NavigationBar?>
 <?import CustomControls.foodMenuItem.FoodMenuItem?>
 <?import javafx.geometry.Insets?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <Pane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F0F0F0;" fx:controller="Menus.OrderMenu.OrderMenuController"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
 
     <!-- Nav Bar -->
     <NavigationBar></NavigationBar>
 
-    <!-- Right Empty Pane -->
+    <!-- Food Menu Items Pane -->
     <Pane layoutX="481.0" layoutY="90.0" prefHeight="510.0" prefWidth="419.0" style="-fx-background-color: #FFFFFF;">
         <children>
             <ScrollPane layoutX="20" layoutY="20" prefWidth="375" prefHeight="440">
@@ -29,8 +31,6 @@
                             <GridPane hgap="20" vgap="20" prefWidth="370"
                                       alignment="TOP_CENTER" style="-fx-padding: 20 0 20 0">
 
-                                <!-- Con codigo se puede hacer un menu mas grande automaticamente,
-                                para propositos del proyecto, estara "hard coded"-->
                                 <Label text="Entradas" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="0">
                                     <font>
                                         <Font name="Arial Bold" size="17.0"  />
@@ -96,20 +96,32 @@
     <!--Order Table Pane-->
     <Pane layoutY="90.0" prefHeight="510.0" prefWidth="481.0" visible="true" fx:id="orderPane">
         <children>
-            <Label text="Mesa " layoutX="20" layoutY="20">
+            <Label fx:id="currentTableLabel" layoutX="20" layoutY="20">
                 <font>
                     <Font name="Arial Bold" size="25.0"  />
                 </font>
             </Label>
             <!-- Scroll Pane adds scrollbar if content floods-->
-            <ScrollPane layoutX="20" layoutY="60" prefHeight="300.0" prefWidth="435.0">
+            <ScrollPane layoutX="20" layoutY="60" prefHeight="320.0" prefWidth="435.0">
                 <content>
-                    <TableView>
+                    <TableView fx:id="foodMenuItemsTable">
                         <columns>
-                            <TableColumn text="Alimento" prefWidth="230"></TableColumn>
-                            <TableColumn text="Cantidad" prefWidth="80"></TableColumn>
-                            <TableColumn text="Precio" prefWidth="100"></TableColumn>
+                            <TableColumn text="Alimento" prefWidth="260">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="name"></PropertyValueFactory>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn text="Precio" prefWidth="150">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="totalPrice"></PropertyValueFactory>
+                                </cellValueFactory>
+                            </TableColumn>
                         </columns>
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+
+                            </FXCollections>
+                        </items>
                     </TableView>
                 </content>
             </ScrollPane>
@@ -139,7 +151,8 @@
             <!--Return Button-->
             <Button text="Regresar" prefWidth="100" prefHeight="20" layoutX="160" layoutY="435"
                     style="-fx-background-color: #DF2935; -fx-background-radius: 10;" textFill="white"
-            >
+                    onAction="#returnToTableMenu">
+
                 <font>
                     <Font name="Arial Bold" size="17.0" />
                 </font>

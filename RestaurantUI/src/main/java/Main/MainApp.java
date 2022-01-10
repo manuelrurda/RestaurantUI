@@ -35,7 +35,7 @@ public class MainApp extends Application {
             //Testing
             Admin testUser = new Admin("m", "l", "m", "m");
             CurrentUser.getInstance().setCurrentUser(testUser);
-            Parent root = new FXMLLoader().load(Utils.formInputStreamFromURL("src/main/java/Menus/OrderMenu/OrderMenu.fxml"));
+            Parent root = new FXMLLoader().load(Utils.formInputStreamFromURL("src/main/java/Menus/TablesMenu/TablesMenu.fxml"));
             stage.setHeight(600);
             stage.setWidth(900);
 

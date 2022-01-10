@@ -6,7 +6,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.text.Font?>
 
@@ -31,7 +30,7 @@
         </Label>
 
         <!--Botones de agregar y eliminar-->
-        <Button text="+" layoutX="15" layoutY="50" prefHeight="35" prefWidth="50" style="-fx-background-color: #2bab35"
+        <Button onAction="#addItem" text="+" layoutX="15" layoutY="50" prefHeight="35" prefWidth="50" style="-fx-background-color: #2bab35"
         textFill="white">
             <font>
                 <Font name="Arial Bold" size="20.0" />

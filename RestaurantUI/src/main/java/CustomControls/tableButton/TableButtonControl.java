@@ -31,6 +31,7 @@ public class TableButtonControl extends AnchorPane {
             this.getChildren().add(n);
 
             controller.getMenuButton().setText(tableNumber);
+            controller.getTable().setTableNum(tableNumber);
 
 
         }catch (IOException e){
