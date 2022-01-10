@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      prefHeight="100.0" prefWidth="140.0" style="-fx-background-color: white; -fx-border-radius: 10;
+      -fx-background-radius: 10; -fx-padding: 10" >
+    <children>
+
+
+        <!--Precio y Nombre del producto-->
+        <Label fx:id="nameLabel" layoutX="10" layoutY="10">
+            <font>
+                <Font name="Arial" size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="priceLabel" layoutX="10" layoutY="30">
+            <font>
+                <Font name="Arial" size="13.0" />
+            </font>
+        </Label>
+
+        <!--Botones de agregar y eliminar-->
+        <Button text="+" layoutX="15" layoutY="50" prefHeight="35" prefWidth="50" style="-fx-background-color: #2bab35"
+        textFill="white">
+            <font>
+                <Font name="Arial Bold" size="20.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <DropShadow height="9.66" offsetY="1.0" radius="2.7425" width="3.31" />
+            </effect>
+        </Button>
+        <Button text="-" layoutX="75" layoutY="50" prefHeight="35" prefWidth="50" style="-fx-background-color: #DF2935"
+        textFill="white">
+            <font>
+                <Font name="Arial Bold" size="20.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <DropShadow height="9.66" offsetY="1.0" radius="2.7425" width="3.31" />
+            </effect>
+        </Button>
+    </children>
+
+    <effect>
+        <DropShadow height="9.66" offsetY="1.0" radius="2.7425" width="3.31" />
+    </effect>
+</Pane>

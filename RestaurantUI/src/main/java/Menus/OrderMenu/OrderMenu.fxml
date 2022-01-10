@@ -10,6 +10,8 @@
 <?import javafx.scene.effect.DropShadow?>
 
 <?import CustomControls.navigationBar.NavigationBar?>
+<?import CustomControls.foodMenuItem.FoodMenuItem?>
+<?import javafx.geometry.Insets?>
 <Pane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F0F0F0;" fx:controller="Menus.OrderMenu.OrderMenuController"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
 
@@ -19,11 +21,72 @@
     <!-- Right Empty Pane -->
     <Pane layoutX="481.0" layoutY="90.0" prefHeight="510.0" prefWidth="419.0" style="-fx-background-color: #FFFFFF;">
         <children>
-            <Label layoutX="28.0" layoutY="22.0" text="Seleccione una mesa...">
-                <font>
-                    <Font name="Arial" size="16.0" />
-                </font>
-            </Label>
+            <ScrollPane layoutX="20" layoutY="20" prefWidth="375" prefHeight="440">
+                <content>
+                    <VBox fx:id="foodMenuItemsVBox">
+                        <children>
+                            <!-- Entradas -->
+                            <GridPane hgap="20" vgap="20" prefWidth="370"
+                                      alignment="TOP_CENTER" style="-fx-padding: 20 0 20 0">
+
+                                <!-- Con codigo se puede hacer un menu mas grande automaticamente,
+                                para propositos del proyecto, estara "hard coded"-->
+                                <Label text="Entradas" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="0">
+                                    <font>
+                                        <Font name="Arial Bold" size="17.0"  />
+                                    </font>
+                                </Label>
+
+                            </GridPane>
+
+                            <Separator></Separator>
+
+                            <!-- Quesadillas -->
+                            <GridPane hgap="20" vgap="20" prefWidth="370"
+                                      alignment="TOP_CENTER" style="-fx-padding: 20 0 20 0">
+
+                                <Label text="Quesadillas" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="0">
+                                    <font>
+                                        <Font name="Arial Bold" size="17.0"  />
+                                    </font>
+                                </Label>
+
+                            </GridPane>
+
+                            <Separator></Separator>
+
+                            <!-- Postres -->
+                            <GridPane hgap="20" vgap="20" prefWidth="370"
+                                      alignment="TOP_CENTER" style="-fx-padding: 20 0 20 0">
+
+                                <Label text="Postres" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="0">
+                                    <font>
+                                        <Font name="Arial Bold" size="17.0"  />
+                                    </font>
+                                </Label>
+
+                            </GridPane>
+
+                            <Separator></Separator>
+
+                            <!-- Bebidas -->
+                            <GridPane hgap="20" vgap="20" prefWidth="370"
+                                      alignment="TOP_CENTER" style="-fx-padding: 20 0 20 0">
+
+                                <Label text="Bebidas" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="0">
+                                    <font>
+                                        <Font name="Arial Bold" size="17.0"  />
+                                    </font>
+                                </Label>
+
+                            </GridPane>
+
+
+                        </children>
+                    </VBox>
+
+                </content>
+            </ScrollPane>
         </children>
         <effect>
             <DropShadow blurType="GAUSSIAN" height="0.0" radius="4.5" width="20.0" />

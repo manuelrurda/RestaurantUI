@@ -1,0 +1,100 @@
+[
+  [
+    {
+      "name": "Sopa de Pollo",
+      "price": 53.00,
+      "taxPorcentage": 0.0
+    },
+    {
+      "name": "Sopa de Tortilla",
+      "price": 49.00,
+      "taxPorcentage": 0.0
+    },
+    {
+      "name": "Frijoles Charros",
+      "price": 53.00,
+      "taxPorcentage": 0.08
+    },
+    {
+      "name": "Queso Fundido",
+      "price": 58.00,
+      "taxPorcentage": 0.08
+    },
+    {
+      "name": "Guacamole",
+      "price": 43.00,
+      "taxPorcentage": 0.0
+    }
+  ],
+  [
+    {
+      "name": "Queso",
+      "price": 47.00,
+      "taxPorcentage": 0.08
+    },
+    {
+      "name": "Pollo",
+      "price": 53.00,
+      "taxPorcentage": 0.08
+    },
+    {
+      "name": "Nopal",
+      "price": 53.00,
+      "taxPorcentage": 0.08
+    },
+    {
+      "name": "Chorizo",
+      "price": 55.00,
+      "taxPorcentage": 0.08
+    },
+    {
+      "name": "Pastor",
+      "price": 55.00,
+      "taxPorcentage": 0.08
+    }
+  ],
+  [
+    {
+      "name": "Tres Leches",
+      "price": 49.00,
+      "taxPorcentage": 0.08
+    },
+    {
+      "name": "Arroz con Leche",
+      "price": 29.00,
+      "taxPorcentage": 0.08
+    },
+    {
+      "name": "Flan",
+      "price": 29.00,
+      "taxPorcentage": 0.08
+    }
+  ],
+  [
+    {
+      "name": "Agua Fresca",
+      "price": 25.00,
+      "taxPorcentage": 0.0,
+    },
+    {
+      "name": "Refresco",
+      "price": 30.00,
+      "taxPorcentage": 0.08
+    },
+    {
+      "name": "Cerveza",
+      "price": 45.00,
+      "taxPorcentage": 0.12
+    },
+    {
+      "name": "Michelada",
+      "price": 53.00,
+      "taxPorcentage": 0.12
+    },
+    {
+      "name": "Agua Enbotellada",
+      "price": 22.00,
+      "taxPorcentage": 0.0
+    }
+  ]
+]

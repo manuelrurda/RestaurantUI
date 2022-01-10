@@ -32,21 +32,30 @@ public class MainApp extends Application {
     public void start(Stage stage) {
         System.out.println(System.getProperty("user.dir"));
         try{
-            Parent root = new FXMLLoader().load(Utils.formInputStreamFromURL("src/main/java/LogIn/LogIn.fxml"));
+            //Testing
+            Admin testUser = new Admin("m", "l", "m", "m");
+            CurrentUser.getInstance().setCurrentUser(testUser);
+            Parent root = new FXMLLoader().load(Utils.formInputStreamFromURL("src/main/java/Menus/OrderMenu/OrderMenu.fxml"));
+            stage.setHeight(600);
+            stage.setWidth(900);
+
+            //TODO: Remove comments after testing
+            //Parent root = new FXMLLoader().load(Utils.formInputStreamFromURL("src/main/java/LogIn/LogIn.fxml"));
             Scene scene = new Scene(root);
 
             // Escena principl, pantalla de LogIn
             stage.setTitle("La Fonda Tista");
             stage.setScene(scene);
-            stage.setHeight(400);
-            stage.setWidth(650);
+            //stage.setHeight(400);
+            //stage.setWidth(650);
             stage.setResizable(false);
             stage.show();
 
         }catch(IOException e){
-            System.out.println("Error al cargar el archivo");
+            System.out.println("Error starting the application");
             e.printStackTrace();
         }
+
 
         // Cargar informacion de los usuarios al iniciar
         try{

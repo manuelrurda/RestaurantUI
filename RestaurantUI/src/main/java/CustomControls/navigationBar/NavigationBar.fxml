@@ -4,15 +4,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<!-- Nav Bar -->
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.text.Font?>
 <?import javafx.geometry.Insets?>
+
+
 <Pane xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml" prefHeight="90.0" prefWidth="900.0" style="-fx-background-color: #DF2935;">
 <children>
+
+    <!--Fonda Tista Logo-->
     <ImageView fx:id="fondaTistaLogo" fitHeight="89.0" fitWidth="89.0" layoutX="25.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
     </ImageView>
+
+    <!--Menu Buttons-->
     <HBox alignment="CENTER" layoutX="329.0" layoutY="9.0" prefHeight="73.0" prefWidth="571.0">
         <children>
             <Button fx:id="adminMenuButton" maxWidth="90.0" minWidth="90.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="90.0" style="-fx-background-color: #DF2935;" text="Admin" textFill="WHITE">
@@ -49,6 +54,8 @@
                 </HBox.margin>
             </Button>
             <Separator orientation="VERTICAL" prefHeight="66.0" prefWidth="41.0" />
+
+            <!-- User Name and logout button-->
             <Label fx:id="nameLabel" alignment="CENTER_RIGHT" maxWidth="120.0" minWidth="50.0" prefHeight="37.0" textAlignment="RIGHT" textFill="WHITE" HBox.hgrow="NEVER">
                 <font>
                     <Font name="Arial Bold" size="20.0" />
