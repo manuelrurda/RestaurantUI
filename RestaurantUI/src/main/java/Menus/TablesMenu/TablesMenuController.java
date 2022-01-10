@@ -11,13 +11,18 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+/**
+ * Controlador de la escena TableMenu. Obtiene los componentes del archivo FXML, inicializa valores
+ * y contiene los metodos para los botones.
+ */
+
 public class TablesMenuController {
 
     @FXML
     private List<TableButtonControl> tableButtons;
 
     /**
-     * Metodo que se llama al cargar el archivo FXML para configurar valores iniciales del componente.
+     * Metodo que se llama al cargar el archivo FXML para configurar valores iniciales del componente. Lee y carga el estado de las mesas.
      */
     public void initialize(){
         // Leer estado de las mesas

@@ -20,6 +20,8 @@
     <!--Menu Buttons-->
     <HBox alignment="CENTER" layoutX="329.0" layoutY="9.0" prefHeight="73.0" prefWidth="571.0">
         <children>
+
+            <!--Boton Menu Admin, solo se hace disponible si el usuario es det tipo Admin-->
             <Button fx:id="adminMenuButton" maxWidth="90.0" minWidth="90.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="90.0" style="-fx-background-color: #DF2935;" text="Admin" textFill="WHITE">
                 <font>
                     <Font name="Arial" size="20.0" />
@@ -31,18 +33,9 @@
                     <Insets left="5.0" right="5.0" />
                 </HBox.margin>
             </Button>
+
+            <!--Boton Menu Mesas, solo necesario si el usuario es admin-->
             <Button minWidth="90.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="90.0" style="-fx-background-color: #DF2935;" text="Mesas" textFill="WHITE">
-                <font>
-                    <Font name="Arial" size="20.0" />
-                </font>
-                <cursor>
-                    <Cursor fx:constant="HAND" />
-                </cursor>
-                <HBox.margin>
-                    <Insets left="5.0" right="5.0" />
-                </HBox.margin>
-            </Button>
-            <Button maxWidth="150.0" minWidth="150.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="150.0" style="-fx-background-color: #DF2935;" text="Estadísticas" textFill="WHITE">
                 <font>
                     <Font name="Arial" size="20.0" />
                 </font>
@@ -55,7 +48,7 @@
             </Button>
             <Separator orientation="VERTICAL" prefHeight="66.0" prefWidth="41.0" />
 
-            <!-- User Name and logout button-->
+            <!-- Nombre del usuario y boton log-out -->
             <Label fx:id="nameLabel" alignment="CENTER_RIGHT" maxWidth="120.0" minWidth="50.0" prefHeight="37.0" textAlignment="RIGHT" textFill="WHITE" HBox.hgrow="NEVER">
                 <font>
                     <Font name="Arial Bold" size="20.0" />

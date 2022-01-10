@@ -1,7 +1,5 @@
 package Table;
 
-import User.User;
-
 /**
  * Clase Singleton para poder acceder a la mesa en uso.
  */
@@ -19,9 +17,6 @@ public class CurrentTable {
         this.currentTable = t;
     }
 
-    public void clearCurrentTable(){
-        this.currentTable = null;
-    }
     public Table getCurrentTable(){
         return this.currentTable;
     }

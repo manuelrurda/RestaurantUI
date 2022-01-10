@@ -15,13 +15,15 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.simple.*;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
+/**
+ * Controlador de la escena OrderMenu. Obtiene los componentes del archivo FXML, inicializa valores
+ * y contiene los metodos para los botones.
+ */
 
 public class OrderMenuController {
 
@@ -38,25 +40,32 @@ public class OrderMenuController {
     private org.json.simple.JSONObject currentTableDataJSON;
 
     /**
-     * Metodo que se llama al cargar el archivo FXML para configurar valores iniciales del componente.
+     * Metodo que se llama al cargar el archivo FXML para configurar valores iniciales de la escena.
      */
     public void initialize() {
 
-        // Establecer controller para ser accesible para los otros componentes
+        // Establecer controller en clase Singleton para ser accesible para los componentes personalizados
         OrderMenu.getInstance().setOrderMenu(this);
 
         table = CurrentTable.getInstance().getCurrentTable();
         System.out.println(table.getOrder().toString());
+
         // Mostrar numero de mesa
         currentTableLabel.setText("Mesa " + table.getTableNum());
 
-        loadTableData();
+        tablesDataJson = Utils.getSimpleJSONData("src/main/resources/Tables.json");
+        currentTableDataJSON = (org.json.simple.JSONObject) tablesDataJson.get(Integer.valueOf(table.getTableNum()) - 1);
+
         loadMenu();
         loadTableOrder();
 
 
     }
 
+    /**
+     * Metodo que utiliza la biblioteca Org.JSON para cargar el archivo Menu.json asociar cada elemento a un <code>FoodMenuItem</code>.
+     * Ademas posiciona los componentes en el la escena.
+     */
     private void loadMenu(){
         // Cargar menu
         try{
@@ -95,6 +104,9 @@ public class OrderMenuController {
         }
     }
 
+    /**
+     * Metodo que carga la orden de la mesa actual.
+     */
     private void loadTableOrder(){
         for (Object obj : (org.json.simple.JSONArray) currentTableDataJSON.get("order")){
             org.json.simple.JSONObject jsonObject = (org.json.simple.JSONObject) obj;
@@ -108,19 +120,10 @@ public class OrderMenuController {
         }
     }
 
-    private void loadTableData(){
-        try{
-            String data = new String(Files.readAllBytes(Paths.get("src/main/resources/Tables.json")));
-            tablesDataJson = (org.json.simple.JSONArray) JSONValue.parse(data);
-
-            currentTableDataJSON = (org.json.simple.JSONObject) tablesDataJson.get(Integer.valueOf(table.getTableNum()) - 1);
-
-        }catch (IOException e){
-            System.out.println("Error loading table data.");
-            e.printStackTrace();
-        }
-    }
-
+    /**
+     * Metodo que agrega un objeto Product al objeto Table, a la tabla del Menu y al Objeto JSON para guardarlo mas tarde.
+     * @param product Producto a agregar.
+     */
     public void addItem(Product product) {
 
         // Agregar elemento a objeto Product
@@ -131,10 +134,26 @@ public class OrderMenuController {
         org.json.simple.JSONObject p = productToJSON(product);
         org.json.simple.JSONArray order = (org.json.simple.JSONArray)currentTableDataJSON.get("order");
         order.add(p);
-        System.out.println(order.toJSONString());
     }
 
-    public  org.json.simple.JSONObject productToJSON(Product p){
+    /**
+     * Metodo llamado al hacer click en el boton de "Regresar". Guarda los cambios en el archivo JSON y cambia la escena.
+     * @param event Click en el boton.
+     */
+    public void returnToTableMenu(ActionEvent event) {
+        // Escribir cambios en JSON
+        Utils.saveJSONFile(tablesDataJson, "src/main/resources/Tables.json");
+
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Utils.changeScene("src/main/java/Menus/TablesMenu/TablesMenu.fxml", stage);
+    }
+
+    /**
+     * Transforma un objeto Product a un JSONObject que se puede guardar en el archivo JSON.
+     * @param p Producto a transformar a JSON.
+     * @return Devuelve el JSONObject generado.
+     */
+    private  org.json.simple.JSONObject productToJSON(Product p){
         org.json.simple.JSONObject ob = new org.json.simple.JSONObject();
         ob.put("name", p.getName());
         ob.put("price", p.getPrice());
@@ -143,17 +162,5 @@ public class OrderMenuController {
         return ob;
     }
 
-    public void returnToTableMenu(ActionEvent event) {
-        // Escribir cambios en JSON
-        try {
-            FileWriter fileWriter = new FileWriter("src/main/resources/Tables.json");
-            fileWriter.write(tablesDataJson.toJSONString());
-            fileWriter.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Utils.changeScene("src/main/java/Menus/TablesMenu/TablesMenu.fxml", stage);
-    }
 }

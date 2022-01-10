@@ -2,7 +2,7 @@ package Menus.OrderMenu;
 
 
 /**
- * Clase Singleton para poder acceder a la mesa en uso.
+ * Clase Singleton para poder acceder al controlador del Menu de Ordenar.
  */
 public class OrderMenu {
     private OrderMenuController orderMenu;

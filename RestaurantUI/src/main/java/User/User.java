@@ -1,18 +1,18 @@
 package User;
 
-import java.io.Serializable;
 import java.util.HashMap;
 
 /**
- *
+ * Clase de Usuario, sera abstracta porque no habran elementos tipo User, solo Admin o Waiter.
  */
-public abstract class User implements Serializable {
+public abstract class User{
 
     private String firstName;
     private String lastName;
     private String username;
     private String password;
 
+    // Se guardan todos los usuarios
     static public HashMap<String, User> USERS = new HashMap<String, User>();
 
      User(String firstName, String lastName, String username, String password) {
@@ -23,6 +23,7 @@ public abstract class User implements Serializable {
         USERS.put(username, this);
     }
 
+    // Setters y Getters
 
     public String getFirstName() {
         return firstName;
@@ -44,6 +45,7 @@ public abstract class User implements Serializable {
         this.password = password;
     }
 
+    //Para debug
     @Override
     public String toString() {
         return "User{" +

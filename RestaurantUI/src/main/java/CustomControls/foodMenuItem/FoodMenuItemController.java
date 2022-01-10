@@ -1,22 +1,19 @@
 package CustomControls.foodMenuItem;
 
-import Main.Utils;
 import Menus.OrderMenu.OrderMenu;
-import Menus.OrderMenu.OrderMenuController;
 import Product.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controlador del componente <code>FoodMenuItem</code>. Obtiene los componentes del archivo FXML y los metodos para
+ * los botones. Implementa la interfaz Initializable para poder ser utilizado en FXML.
+ */
 public class FoodMenuItemController implements Initializable {
 
     @FXML
@@ -31,6 +28,8 @@ public class FoodMenuItemController implements Initializable {
 
 
     }
+
+    // Getters y Setters
 
     public Product getProduct(){
         return product;
@@ -48,8 +47,11 @@ public class FoodMenuItemController implements Initializable {
         return priceLabel;
     }
 
+    /**
+     *  Llama al metodo <code>addItem</code> del controller y pasa como parametro el objeto Product asociado con el componente.
+     * @param e Click en el boton.
+     */
     public void addItem(ActionEvent e){
-
         OrderMenu.getInstance().getController().addItem(product);
     }
 

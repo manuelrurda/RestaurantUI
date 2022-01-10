@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -10,17 +8,16 @@
 <?import javafx.scene.effect.DropShadow?>
 
 <?import CustomControls.navigationBar.NavigationBar?>
-<?import CustomControls.foodMenuItem.FoodMenuItem?>
-<?import javafx.geometry.Insets?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+
 <Pane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F0F0F0;" fx:controller="Menus.OrderMenu.OrderMenuController"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
 
-    <!-- Nav Bar -->
+    <!-- Barra de navegacion -->
     <NavigationBar></NavigationBar>
 
-    <!-- Food Menu Items Pane -->
+    <!-- Panel con elementos del Menu -->
     <Pane layoutX="481.0" layoutY="90.0" prefHeight="510.0" prefWidth="419.0" style="-fx-background-color: #FFFFFF;">
         <children>
             <ScrollPane layoutX="20" layoutY="20" prefWidth="375" prefHeight="440">
@@ -93,7 +90,7 @@
         </effect>
     </Pane>
 
-    <!--Order Table Pane-->
+    <!-- Panel con elementos de la orden -->
     <Pane layoutY="90.0" prefHeight="510.0" prefWidth="481.0" visible="true" fx:id="orderPane">
         <children>
             <Label fx:id="currentTableLabel" layoutX="20" layoutY="20">

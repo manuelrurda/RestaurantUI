@@ -1,15 +1,17 @@
 package Main;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONValue;
 
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * Clase con metodos de utilidad para trabajar con JavaFX
@@ -19,13 +21,13 @@ public abstract class Utils {
      * Metodo para generar un InputStream a partir de un directorio, es necesario para cargar archivos FXML, imagenes,
      * stylesheets, etc. Ya existe un metodo que hace esto en Javafx, sin embargo se generaban muchos errores al cargar
      * archivos.
-     * @param url Direccion del arhivo desde raiz del proyecto - RestaurantUI/
+     * @param path Direccion del arhivo desde raiz del proyecto - RestaurantUI/
      * @return Devuelve un objeto InputStream a partir del url.
      */
-    public static InputStream formInputStreamFromURL(String url){
+    public static InputStream formInputStreamFromPath(String path){
         InputStream is = null;
         try{
-            is = new FileInputStream(url);
+            is = new FileInputStream(path);
         }catch(IOException e){
             System.out.println("Error generating Input Stream.");
             e.printStackTrace();
@@ -69,36 +71,14 @@ public abstract class Utils {
     }
 
     /**
-     * Metodo para recibir objetos de otras escenas. El metodo buscara un archivo de objeto con el identificador dado.
-     * Una vez recuperado el objeto, se eliminara el archivo.
-     * @param id Identificador del objeto a recibir.
-     * @return Objeto recivido.
+     * Metodo para cambiar de escena. Carga el archivo de la nueva escena y la muestra en pantalla.
+     * @param path Direccion del archivo desde raiz del proyecto - RestaurantUI/
+     * @param stage Ventana de la aplicacion.
      */
-    public static Object receiveObject(String id){
-        Object obj = null;
-        try{
-            FileInputStream f = new FileInputStream("src/main/java/"+ id + ".ser");
-            ObjectInputStream s = new ObjectInputStream(f);
-            obj = s.readObject();
-            // Borrar archivo temporal
-            new File("src/main/java/"+ id + ".ser").delete();
-            s.close();
-        }catch (FileNotFoundException e){
-            System.out.println("Object with given Id not found.");
-            e.printStackTrace();
-        }catch (IOException e){
-            System.out.println("Error reading Object data.");
-            e.printStackTrace();
-        }catch (ClassNotFoundException e){
-            e.printStackTrace();
-        }
-        return obj;
-    }
-
     public static void changeScene(String path, Stage stage){
         try{
 
-            Parent root = new FXMLLoader().load(Utils.formInputStreamFromURL(
+            Parent root = new FXMLLoader().load(Utils.formInputStreamFromPath(
                     path));
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -108,5 +88,37 @@ public abstract class Utils {
             System.out.println("Error loading Scene FXML file.");
             exception.printStackTrace();
         }
+    }
+
+    /**
+     * Metodo para guardar los cambios al archivo JSON especificado.
+     * @param jsonDataArray Objeto con los cambios a gaurdar.
+     * @param path Direccion del archivo desde raiz del proyecto - RestaurantUI/
+     */
+    public static void saveJSONFile(JSONArray jsonDataArray, String path) {
+        // Escribir cambios en JSON
+        try {
+            FileWriter fileWriter = new FileWriter(path);
+            fileWriter.write(jsonDataArray.toJSONString());
+            fileWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Metodo que utiliza la biblioteca de SimpleJSON para obtener la informacion del archivo JSON especificado.
+     * @param path Direccion del archivo desde raiz del proyecto - RestaurantUI/
+     * @return Objeto JSONArray con la informacion de todo el archivo.
+     */
+    public static org.json.simple.JSONArray getSimpleJSONData(String path){
+        org.json.simple.JSONArray jsonArray = null;
+        try{
+            String data = new String(Files.readAllBytes(Paths.get(path)));
+            jsonArray = (org.json.simple.JSONArray) JSONValue.parse(data);
+        }catch(IOException e){
+            System.out.println("Error reading JSON data.");
+        }
+        return jsonArray;
     }
 }

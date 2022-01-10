@@ -1,5 +1,9 @@
 package Product;
 
+/**
+ *  Clase Product estara asociada a un <code>foodMenuItem</code>. Guarda la informacion para el nombre, precio y porcentaje de impuestos del producto.
+ */
+
 public class Product {
 
     private String name;
@@ -14,6 +18,8 @@ public class Product {
         // Redondear a dos decimales
         this.totalPrice = (Math.round((price + price*taxPorcentage)*100.0)/100.0);
     }
+
+    // Setters y Getters
 
     public String getName() {
         return name;
@@ -31,6 +37,7 @@ public class Product {
         return totalPrice;
     }
 
+    // para debug
     @Override
     public String toString() {
         return "Product{" +

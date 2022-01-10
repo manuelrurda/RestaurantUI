@@ -16,8 +16,7 @@ public class Table {
 
     private ArrayList<Product> order = new ArrayList<Product>();
 
-    public Table() {
-    }
+    // Setters Y Getters
 
     public boolean getOccupied(){
         return occupied;

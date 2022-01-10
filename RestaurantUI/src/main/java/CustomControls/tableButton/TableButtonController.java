@@ -17,6 +17,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+/**
+ * Controlador del componente <code>TableButton</code>. Obtiene los componentes del archivo FXML, inicializa valores
+ * y contiene los metodos para los botones. Implementa la interfaz Initializable para poder ser utilizado en FXML.
+ */
+
 public class TableButtonController implements Initializable {
 
     @FXML
@@ -35,12 +40,14 @@ public class TableButtonController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Image tableIcon = new Image(Utils.formInputStreamFromURL("src/main/resources/Images/TableIcon.png"));
+        Image tableIcon = new Image(Utils.formInputStreamFromPath("src/main/resources/Images/TableIcon.png"));
         ImageView tiIV = new ImageView(tableIcon);
         tiIV.setFitWidth(80);
         tiIV.setFitHeight(80);
         menuButton.setGraphic(tiIV);
     }
+
+    // Getters y Setters
 
     public MenuButton getMenuButton() {
         return menuButton;
@@ -55,12 +62,13 @@ public class TableButtonController implements Initializable {
     }
 
     /**
-     * Metodo llamado al momento de hacer click en el <code>MenuItem</code> "Coupar/Desocupar" de este componente.
+     * Metodo llamado al momento de hacer click en la opcion "Coupar/Desocupar" de este componente. Cambia el estado de la mesa
+     * y guarda los cambios en el archivo JSON.
      * @param e Click del mouse en el componente.
      */
-    public void tableButtonClick(ActionEvent e){
+    public void occupyButtonClick(ActionEvent e){
         setTableOccupiedStatus(!getTable().getOccupied());
-        table.getOrder().clear();
+        changeJsonStatus();
     }
 
     /**
@@ -82,9 +90,30 @@ public class TableButtonController implements Initializable {
         }
     }
 
+    /**
+     *  Carga el archivo JSON de mesas y cambia el estado de la mesa al contrario en el que se encontraba.
+     */
+    private void changeJsonStatus(){
+        String path = "src/main/resources/Tables.json";
+
+        org.json.simple.JSONArray tablesDataJson = Utils.getSimpleJSONData(path);
+        org.json.simple.JSONObject currentTableDataJSON = (org.json.simple.JSONObject) tablesDataJson.get(Integer.valueOf(table.getTableNum()) - 1);
+
+        currentTableDataJSON.put("OccupiedStatus", !((Boolean)(currentTableDataJSON.get("OccupiedStatus"))));
+        currentTableDataJSON.put("order",  new org.json.simple.JSONArray());
+
+        Utils.saveJSONFile(tablesDataJson, path);
+    }
+
+    /**
+     * Metodo llamado al hacer click en la opcion de "Ordenar". Establece la mesa que se esta atendiendo en la clase Singleton.
+     * y cambia la escena al Menu de ordenar.
+     * @param e
+     */
     public void openOrder(ActionEvent e){
         CurrentTable.getInstance().setCurrentTable(table);
         Stage stage = (Stage) mainPane.getScene().getWindow();
         Utils.changeScene("src/main/java/Menus/OrderMenu/OrderMenu.fxml", stage);
     }
+
 }

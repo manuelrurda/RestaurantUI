@@ -5,18 +5,13 @@ import Main.Utils;
 import User.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 /**
  * Controlador para la escena de Log-In. Contiene toda la logica para obtener la informacion de los campos de texto
@@ -38,9 +33,9 @@ public class LogInController {
      * Metodo inicial de la escena, configura valores iniciales para los componentes.
      */
     public void initialize(){
-        Image logo = new Image(Utils.formInputStreamFromURL("src/main/resources/Images/FondaTistaLogo.png"));
+        Image logo = new Image(Utils.formInputStreamFromPath("src/main/resources/Images/FondaTistaLogo.png"));
         fondaTistaLogo.setImage(logo);
-        Image lockImage = new Image(Utils.formInputStreamFromURL("src/main/resources/Images/LockIcon.png"));
+        Image lockImage = new Image(Utils.formInputStreamFromPath("src/main/resources/Images/LockIcon.png"));
         lockIcon.setImage(lockImage);
     }
 

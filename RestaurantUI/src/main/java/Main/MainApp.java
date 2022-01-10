@@ -20,22 +20,23 @@ import org.json.JSONObject;
 
 /**
  * @author Manuel Rodriguez, Juan Pablo
+ *
+ * Clase principal.
  */
 public class MainApp extends Application {
 
     /**
      * Metodo de inicializacion de JavaFX, se llama al inicio del programa para configurar los parametros de la ventana,
-     * dar valores inciales y mostrar la primera escena.
+     * dar valores inciales, mostrar la primera escena y cargar los usuarios.
      * @param stage Ventana principal, JavaFX la genera automaticamente.
      */
     @Override
     public void start(Stage stage) {
-        System.out.println(System.getProperty("user.dir"));
         try{
             //Testing
             Admin testUser = new Admin("m", "l", "m", "m");
             CurrentUser.getInstance().setCurrentUser(testUser);
-            Parent root = new FXMLLoader().load(Utils.formInputStreamFromURL("src/main/java/Menus/TablesMenu/TablesMenu.fxml"));
+            Parent root = new FXMLLoader().load(Utils.formInputStreamFromPath("src/main/java/Menus/TablesMenu/TablesMenu.fxml"));
             stage.setHeight(600);
             stage.setWidth(900);
 
@@ -44,6 +45,7 @@ public class MainApp extends Application {
             Scene scene = new Scene(root);
 
             // Escena principl, pantalla de LogIn
+
             stage.setTitle("La Fonda Tista");
             stage.setScene(scene);
             //stage.setHeight(400);
