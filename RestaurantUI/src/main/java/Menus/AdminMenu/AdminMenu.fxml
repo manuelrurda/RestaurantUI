@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import CustomControls.navigationBar.NavigationBar?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F0F0F0;"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Menus.AdminMenu.AdminMenuController">
+
+    <!-- Barra de navegacion -->
+    <NavigationBar></NavigationBar>
+
+    <!-- Panel con elementos del Menu -->
+    <Pane layoutY="90.0" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;">
+        <children>
+            <ScrollPane layoutX="260" layoutY="20" prefWidth="375" prefHeight="350">
+                <content >
+                    <VBox fx:id="foodMenuItemsVBox" style="-fx-padding: 15 0 15 15">
+                        <children>
+                            <Label text="Usuarios">
+                                <font>
+                                    <Font name="Arial Bold" size="17.0"  />
+                                </font>
+                            </Label>
+                        </children>
+
+
+                    </VBox>
+
+                </content>
+            </ScrollPane>
+        </children>
+        <!--Botones-->
+        <Pane layoutX="350" layoutY="400" fx:id="buttonsPane">
+            <children>
+                <!--Pay Boton-->
+                <Button text="Agregar Usuario" prefWidth="200" prefHeight="30"
+                        style="-fx-background-color: #fcdb03; -fx-background-radius: 10;">
+                    <font>
+                        <Font name="Arial Bold" size="19.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    <effect>
+                        <DropShadow height="9.66" offsetY="1.0" radius="2.7425" width="3.31" />
+                    </effect>
+                </Button>
+            </children>
+            <effect>
+                <DropShadow blurType="GAUSSIAN" height="0.0" radius="4.5" width="20.0" />
+            </effect>
+        </Pane>
+
+        <!--Panel de Pago-->
+        <Pane layoutX="50" layoutY="120" prefWidth="350" prefHeight="420" visible="false" style="-fx-background-color: white"
+        fx:id="paymentPanel">
+            <children>
+                <Label text="Facturacion" layoutX="15" layoutY="20">
+                    <font>
+                        <Font name="Arial Bold" size="17.0" />
+                    </font>
+                </Label>
+
+                <!--Campo Nombre-->
+                <Label layoutX="20.0" layoutY="60.0" text="Nombre">
+                    <font>
+                        <Font name="Arial Bold" size="15.0" />
+                    </font>
+                </Label>
+                <TextField layoutX="20.0" layoutY="85" prefHeight="35.0" prefWidth="220.0" promptText="Nombre" />
+
+                <!--Campo RFC-->
+                <Label layoutX="20.0" layoutY="140.0" text="RFC">
+                    <font>
+                        <Font name="Arial Bold" size="15.0" />
+                    </font>
+                </Label>
+                <TextField layoutX="20.0" layoutY="165.0" prefHeight="35.0" prefWidth="220.0" promptText="RFC" />
+
+                <!--Campo Email-->
+                <Label layoutX="20.0" layoutY="220.0" text="E-mail">
+                    <font>
+                        <Font name="Arial Bold" size="15.0" />
+                    </font>
+                </Label>
+                <TextField layoutX="20.0" layoutY="245.0" prefHeight="35.0" prefWidth="220.0" promptText="ejemplo@gmail.com" />
+
+                <!--Total-->
+                <Label text="Total: $00.0" layoutX="20.0" layoutY="300.0" alignment="CENTER_RIGHT"
+                prefWidth="300" fx:id="orderTotalLabel">
+                    <font>
+                        <Font name="Arial Bold" size="17.0" />
+                    </font>
+                </Label>
+
+                <!--Pagar-->
+                <Button text="Pagar Y Facturar" prefWidth="250" prefHeight="20" layoutX="50" layoutY="350"
+                        style="-fx-background-color: #fcdb03; -fx-background-radius: 10;">
+                    <font>
+                        <Font name="Arial Bold" size="17.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    <effect>
+                        <DropShadow height="9.66" offsetY="1.0" radius="2.7425" width="3.31" />
+                    </effect>
+                </Button>
+
+            </children>
+            <effect>
+                <DropShadow blurType="GAUSSIAN" height="0.0" radius="4.5" width="20.0" />
+            </effect>
+        </Pane>
+
+    </Pane>
+</Pane>

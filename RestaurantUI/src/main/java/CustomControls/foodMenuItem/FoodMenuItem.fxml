@@ -42,7 +42,7 @@
                 <DropShadow height="9.66" offsetY="1.0" radius="2.7425" width="3.31" />
             </effect>
         </Button>
-        <Button text="-" layoutX="75" layoutY="50" prefHeight="35" prefWidth="50" style="-fx-background-color: #DF2935"
+        <Button onAction="#deleteItem" text="-" layoutX="75" layoutY="50" prefHeight="35" prefWidth="50" style="-fx-background-color: #DF2935"
         textFill="white">
             <font>
                 <Font name="Arial Bold" size="20.0" />

@@ -22,7 +22,7 @@
         <children>
 
             <!--Boton Menu Admin, solo se hace disponible si el usuario es det tipo Admin-->
-            <Button fx:id="adminMenuButton" maxWidth="90.0" minWidth="90.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="90.0" style="-fx-background-color: #DF2935;" text="Admin" textFill="WHITE">
+            <Button onAction="#gotoAdmin" fx:id="adminMenuButton" maxWidth="90.0" minWidth="90.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="90.0" style="-fx-background-color: #DF2935;" text="Admin" textFill="WHITE">
                 <font>
                     <Font name="Arial" size="20.0" />
                 </font>
@@ -35,7 +35,7 @@
             </Button>
 
             <!--Boton Menu Mesas, solo necesario si el usuario es admin-->
-            <Button minWidth="90.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="90.0" style="-fx-background-color: #DF2935;" text="Mesas" textFill="WHITE">
+            <Button onAction="#gotoMesas" minWidth="90.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="90.0" style="-fx-background-color: #DF2935;" text="Mesas" textFill="WHITE">
                 <font>
                     <Font name="Arial" size="20.0" />
                 </font>

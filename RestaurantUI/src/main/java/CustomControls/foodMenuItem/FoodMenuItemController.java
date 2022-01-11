@@ -55,5 +55,7 @@ public class FoodMenuItemController implements Initializable {
         OrderMenu.getInstance().getController().addItem(product);
     }
 
-
+    public void deleteItem(ActionEvent e) {
+        OrderMenu.getInstance().getController().deleteItem(product);
+    }
 }

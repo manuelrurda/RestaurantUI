@@ -33,23 +33,16 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) {
         try{
-            //Testing
-            Admin testUser = new Admin("m", "l", "m", "m");
-            CurrentUser.getInstance().setCurrentUser(testUser);
-            Parent root = new FXMLLoader().load(Utils.formInputStreamFromPath("src/main/java/Menus/TablesMenu/TablesMenu.fxml"));
-            stage.setHeight(600);
-            stage.setWidth(900);
 
-            //TODO: Remove comments after testing
-            //Parent root = new FXMLLoader().load(Utils.formInputStreamFromURL("src/main/java/LogIn/LogIn.fxml"));
+            Parent root = new FXMLLoader().load(Utils.formInputStreamFromPath("src/main/java/LogIn/LogIn.fxml"));
             Scene scene = new Scene(root);
 
             // Escena principl, pantalla de LogIn
 
             stage.setTitle("La Fonda Tista");
             stage.setScene(scene);
-            //stage.setHeight(400);
-            //stage.setWidth(650);
+            stage.setHeight(400);
+            stage.setWidth(650);
             stage.setResizable(false);
             stage.show();
 
@@ -77,6 +70,7 @@ public class MainApp extends Application {
                 }
             }
 
+            // Debug
             for(User u: User.USERS.values()){
                 System.out.println(u.toString());
                 System.out.println(u instanceof Waiter);

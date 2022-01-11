@@ -1,6 +1,7 @@
 package CustomControls.tableButton;
 
 import Main.Utils;
+import Product.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,6 +9,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.effect.InnerShadow;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import Table.*;
@@ -31,7 +33,7 @@ public class TableButtonController implements Initializable {
     @FXML
     private InnerShadow innerShadow;
 
-    private final Table table = new Table();
+    private Table table = new Table();
 
     /**
      * Metodo que se llama al cargar el archivo FXML para configurar valores iniciales del componente.
@@ -40,6 +42,7 @@ public class TableButtonController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         Image tableIcon = new Image(Utils.formInputStreamFromPath("src/main/resources/Images/TableIcon.png"));
         ImageView tiIV = new ImageView(tableIcon);
         tiIV.setFitWidth(80);

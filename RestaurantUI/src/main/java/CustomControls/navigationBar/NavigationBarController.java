@@ -2,12 +2,15 @@ package CustomControls.navigationBar;
 
 import Main.Utils;
 import User.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -39,7 +42,6 @@ public class NavigationBarController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Logo Fonda Tista
-        System.out.println(System.getProperty("user.dir"));
         Image logo = new Image(Utils.formInputStreamFromPath("src/main/resources/Images/FondaTistaLogo.png"));
         fondaTistaLogo.setImage(logo);
 
@@ -53,9 +55,18 @@ public class NavigationBarController implements Initializable {
         // Obtener usuario de clase Singleton.
         user = CurrentUser.getInstance().getCurrentUser();
         nameLabel.setText(user.getFirstName());
-        System.out.println(user.getClass());
 
         // Habilitar menu admin
         adminMenuButton.setVisible(user instanceof Admin);
+    }
+
+    public void gotoMesas(ActionEvent e){
+        Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        Utils.changeScene("src/main/java/Menus/TablesMenu/TablesMenu.fxml", stage);
+    }
+
+    public void gotoAdmin(ActionEvent e){
+        Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        Utils.changeScene("src/main/java/Menus/AdminMenu/AdminMenu.fxml", stage);
     }
 }

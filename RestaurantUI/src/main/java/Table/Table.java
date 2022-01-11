@@ -16,6 +16,16 @@ public class Table {
 
     private ArrayList<Product> order = new ArrayList<Product>();
 
+    public Table(String tableNum, boolean occupied, ArrayList<Product> order) {
+        this.tableNum = tableNum;
+        this.occupied = occupied;
+        this.order = order;
+    }
+
+    public Table() {
+
+    }
+
     // Setters Y Getters
 
     public boolean getOccupied(){
@@ -37,4 +47,16 @@ public class Table {
     public ArrayList<Product> getOrder() {
         return order;
     }
+
+    /**
+     * @return Devuelve el valor total de la orden
+     */
+    public double getOrderTotal(){
+        double total = 0.0;
+        for(Product p : order){
+            total+= p.getTotalPrice();
+        }
+        return total;
+    }
+
 }

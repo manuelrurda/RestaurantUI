@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.json.JSONArray;
@@ -33,6 +34,13 @@ public class OrderMenuController {
     private Label currentTableLabel;
     @FXML
     private TableView foodMenuItemsTable;
+    @FXML
+    private Pane buttonsPane;
+    @FXML
+    private Pane paymentPanel;
+    @FXML
+    private Label orderTotalLabel;
+
 
     private Table table;
 
@@ -48,8 +56,6 @@ public class OrderMenuController {
         OrderMenu.getInstance().setOrderMenu(this);
 
         table = CurrentTable.getInstance().getCurrentTable();
-        System.out.println(table.getOrder().toString());
-
         // Mostrar numero de mesa
         currentTableLabel.setText("Mesa " + table.getTableNum());
 
@@ -125,7 +131,6 @@ public class OrderMenuController {
      * @param product Producto a agregar.
      */
     public void addItem(Product product) {
-
         // Agregar elemento a objeto Product
         table.getOrder().add(product);
         // Agregar elemento a la tabla visible
@@ -134,6 +139,24 @@ public class OrderMenuController {
         org.json.simple.JSONObject p = productToJSON(product);
         org.json.simple.JSONArray order = (org.json.simple.JSONArray)currentTableDataJSON.get("order");
         order.add(p);
+    }
+
+    /**
+     * Metodo que elimina un objeto Product al objeto Table, a la tabla del Menu y al Objeto JSON para guardarlo mas tarde.
+     * @param product Producto a eliminar.
+     */
+    public void deleteItem(Product product){
+        // Eliminar dentro de objeto Product
+        table.getOrder().remove(product);
+        // Eliminar dentro de la tabla visible
+        foodMenuItemsTable.getItems().remove(product);
+
+        System.out.println(product.toString());
+
+        org.json.simple.JSONObject p = productToJSON(product);
+        System.out.println(p.toString());
+        org.json.simple.JSONArray order = (org.json.simple.JSONArray)currentTableDataJSON.get("order");
+        order.remove(p);
     }
 
     /**
@@ -162,5 +185,23 @@ public class OrderMenuController {
         return ob;
     }
 
+    /**
+     * Metodo llamado al hacer click en el boton de Pagar y Facturar.
+     * Para propositos de este proyecto, este metodo solo "realiza la factura" y cierra el panel. No hay ninguna accion por detras.
+     * @param e Click en el boton.
+     */
+    public void pay(ActionEvent e) {
+        buttonsPane.setVisible(true);
+        paymentPanel.setVisible(false);
+    }
 
+    /**
+     * Este metodo abre el panel de pago al hacer click en el boton de pagar.
+     * @param actionEvent Click en el boton.
+     */
+    public void openPaymentPanel(ActionEvent actionEvent) {
+        buttonsPane.setVisible(false);
+        paymentPanel.setVisible(true);
+        orderTotalLabel.setText(String.format("Total: $%.2f", table.getOrderTotal()));
+    }
 }
